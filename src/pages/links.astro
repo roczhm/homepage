@@ -3,6 +3,162 @@ import Base from '../layouts/Base.astro';
 
 const groups = [
   {
+    name: '音乐下载',
+    desc: '听歌与下载音乐的地方。',
+    links: [
+      {
+        name: '1Music',
+        url: 'https://1music.cc',
+        desc: '音乐下载工具站点。',
+      },
+      {
+        name: 'HIFiti',
+        url: 'https://www.hifiti.com',
+        desc: 'Hi-Fi 音频设备与随身听爱好者社区。',
+      },
+    ],
+  },
+  {
+    name: '文件分享和下载',
+    desc: '传文件、下应用常用的站点。',
+    links: [
+      {
+        name: 'Wormhole',
+        url: 'https://wormhole.app',
+        desc: '端到端加密的临时文件分享，链接限时有效。',
+      },
+      {
+        name: 'A2ZAPK',
+        url: 'https://a2zapk.io',
+        desc: '安卓应用与游戏 APK 下载站。',
+      },
+      {
+        name: 'SHRAIRO',
+        url: 'https://app.shrairo.top',
+        desc: '应用下载站点。',
+      },
+      {
+        name: 'Nyaa',
+        url: 'https://nyaa.si',
+        desc: 'ACG 资源索引站，动漫、漫画、音乐资源搜索。',
+      },
+    ],
+  },
+  {
+    name: '测速地址',
+    desc: '测一下网速和线路质量。',
+    links: [
+      {
+        name: 'PTC Speedtest',
+        url: 'https://ptclspeed.speedtestcustom.com',
+        desc: 'Speedtest 自定义测速页。',
+      },
+      {
+        name: 'Google Fiber Speedtest',
+        url: 'https://fiber.google.com/speedtest',
+        desc: 'Google Fiber 官方测速。',
+      },
+      {
+        name: 'USTC 测速',
+        url: 'https://test.ustc.edu.cn',
+        desc: '中国科学技术大学网络测速站。',
+      },
+      {
+        name: 'Fast.com',
+        url: 'https://fast.com',
+        desc: 'Netflix 出品的简洁测速站。',
+      },
+      {
+        name: 'Cloudflare Speed',
+        url: 'https://speed.cloudflare.com',
+        desc: 'Cloudflare 官方测速，带详细链路数据。',
+      },
+    ],
+  },
+  {
+    name: 'IP 检测',
+    desc: '查看出口 IP、DNS 泄露和黑名单状态。',
+    links: [
+      {
+        name: 'BrowserLeaks DNS',
+        url: 'https://browserleaks.com/dns',
+        desc: '检测浏览器 DNS 泄露情况。',
+      },
+      {
+        name: 'MXToolBox Blacklists',
+        url: 'https://mxtoolbox.com/blacklists.aspx',
+        desc: '查询 IP 是否被列入邮件黑名单。',
+      },
+      {
+        name: 'IP2Location',
+        url: 'https://www.ip2location.com',
+        desc: 'IP 地理位置与归属查询。',
+      },
+      {
+        name: 'ipdata',
+        url: 'https://ipdata.co',
+        desc: 'IP 地理位置与网络信息查询。',
+      },
+      {
+        name: '分流出口检测',
+        url: 'https://ip.skk.moe/split-tunnel',
+        desc: '查看分流规则对应的出口 IP。',
+      },
+    ],
+  },
+  {
+    name: 'VPS 论坛与测评',
+    desc: '逛主机论坛、看商家测评。',
+    links: [
+      {
+        name: 'NodeSeek',
+        url: 'https://nodeseek.com',
+        desc: 'VPS 与主机爱好者论坛，商家测评与优惠信息。',
+      },
+      {
+        name: 'MeowVPS',
+        url: 'https://meowvps.com',
+        desc: 'VPS 资讯与测评站点。',
+      },
+      {
+        name: 'sb.sb',
+        url: 'https://sb.sb',
+        desc: 'VPS 测评与技术笔记。',
+      },
+      {
+        name: 'NodeLoc',
+        url: 'https://nodeloc.com',
+        desc: '海外主机与 VPS 交流社区。',
+      },
+    ],
+  },
+  {
+    name: '安卓 LSP 模块',
+    desc: '安卓玩机常用的模块与框架。',
+    links: [
+      {
+        name: 'ZygiskNext',
+        url: 'https://github.com/Dr-TSNG/ZygiskNext',
+        desc: '独立实现的 Zygisk，兼容 KernelSU 等环境。',
+      },
+      {
+        name: 'LSPosed',
+        url: 'https://lsposed.org',
+        desc: 'LSPosed 框架官网，Xposed 模块框架。',
+      },
+      {
+        name: 'TrickyStore',
+        url: 'https://github.com/5ec1cff/TrickyStore',
+        desc: '处理 Android 硬件密钥认证的模块。',
+      },
+      {
+        name: 'PlayIntegrityFix',
+        url: 'https://github.com/KOWX712/PlayIntegrityFix',
+        desc: '修复 Play Integrity 校验的模块。',
+      },
+    ],
+  },
+  {
     name: '开发与工具',
     desc: '写代码、查文档时常用的站点。',
     links: [
@@ -25,38 +181,6 @@ const groups = [
         name: 'Cloudflare Docs',
         url: 'https://developers.cloudflare.com',
         desc: 'CDN、DNS、Pages 部署的官方文档。',
-      },
-    ],
-  },
-  {
-    name: '博客与写作',
-    desc: '经常翻阅的中文博客与写作阵地。',
-    links: [
-      {
-        name: '阮一峰的网络日志',
-        url: 'https://www.ruanyifeng.com/blog/',
-        desc: '科技随笔周刊与技术翻译，持续更新多年。',
-      },
-      {
-        name: '少数派',
-        url: 'https://sspai.com',
-        desc: '效率工具、数字生活与工作流的优质中文社区。',
-      },
-    ],
-  },
-  {
-    name: '阅读与灵感',
-    desc: '获取信息与设计灵感的入口。',
-    links: [
-      {
-        name: 'Hacker News',
-        url: 'https://news.ycombinator.com',
-        desc: '技术圈的新闻聚合，讨论质量高。',
-      },
-      {
-        name: 'Awwwards',
-        url: 'https://www.awwwards.com',
-        desc: '全球网页设计作品评选，找视觉参考。',
       },
     ],
   },

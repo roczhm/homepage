@@ -1,17 +1,5 @@
 ---
 import Base from '../layouts/Base.astro';
-import { SITE_TITLE, AUTHOR_NAME, SITE_SINCE } from '../consts';
-
-const milestones = [
-  {
-    date: `${SITE_SINCE}.10.29`,
-    text: '站点开通，写下第一篇文章。',
-  },
-  {
-    date: `${SITE_SINCE}.10.29`,
-    text: '整理完第一批书签，链接存档上线。',
-  },
-];
 ---
 
 <Base title="关于">
@@ -19,26 +7,37 @@ const milestones = [
   <p class="page-desc">关于我，以及这个站点。</p>
 
   <div class="prose">
+    <p>你好，我是张怀民。这里是我的个人站点，放一些笔记，以及平时收集的链接。</p>
+    <p>本站点托管在 Cloudflare Pages。没有评论系统，没有追踪脚本，打开速度尽可能快。</p>
     <p>
-      你好，我是 {AUTHOR_NAME}。这里是我的个人站点，放一些写作、读书笔记，以及平时收集的链接。
-    </p>
-    <p>
-      站点用 Astro 搭建，托管在 Cloudflare Pages。没有评论系统，没有追踪脚本，打开速度尽可能快。如果你有话想说，欢迎给我发邮件。
+      如果你有话想说，欢迎给我发邮件：<a
+        href="mailto:roczhm@gmail.com"
+        class="mail-link"
+        id="mail-link">roczhm@gmail.com</a
+      >
     </p>
   </div>
 
-  <div class="section-head">
-    <h2>站点日志</h2>
-  </div>
+  <div class="mail-toast" id="mail-toast" hidden></div>
 
-  <ul class="timeline">
-    {
-      milestones.map((m) => (
-        <li>
-          <time>{m.date}</time>
-          <p>{m.text}</p>
-        </li>
-      ))
-    }
-  </ul>
+  <script>
+    const link = document.getElementById('mail-link');
+    const toast = document.getElementById('mail-toast');
+    let timer = 0;
+    link?.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const addr = 'roczhm@gmail.com';
+      try {
+        await navigator.clipboard.writeText(addr);
+        if (toast) toast.textContent = '已复制 ' + addr;
+      } catch {
+        if (toast) toast.textContent = addr;
+      }
+      if (toast) toast.hidden = false;
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        if (toast) toast.hidden = true;
+      }, 2600);
+    });
+  </script>
 </Base>
