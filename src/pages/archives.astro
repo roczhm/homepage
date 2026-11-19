@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts', ({ data }) => data.draft !== true);
+posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const byYear = new Map<number, typeof posts>();
+for (const post of posts) {
+  const y = post.data.date.getFullYear();
+  const list = byYear.get(y) ?? [];
+  list.push(post);
+  byYear.set(y, list);
+}
+const years = [...byYear.keys()].sort((a, b) => b - a);
+
+const fmt = (d: Date) =>
+  `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(
+    d.getDate(),
+  ).padStart(2, '0')}`;
+---
+
+<Base title="归档">
+  <h1 class="page-title">归档</h1>
+  <p class="page-desc">共 {posts.length} 篇文章。</p>
+
+  {
+    years.map((y) => (
+      <section>
+        <div class="year-head">
+          <h2>{y}</h2>
+        </div>
+        <ul class="post-list">
+          {byYear.get(y)!.map((post) => (
+            <li>
+              <time datetime={post.data.date.toISOString().slice(0, 10)}>
+                {fmt(post.data.date)}
+              </time>
+              <div class="item-body">
+                <a class="item-title" href={`/posts/${post.id}`}>
+                  {post.data.title}
+                </a>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>

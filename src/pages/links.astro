@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+
+const groups = [
+  {
+    name: '开发与工具',
+    desc: '写代码、查文档时常用的站点。',
+    links: [
+      {
+        name: 'GitHub',
+        url: 'https://github.com',
+        desc: '代码托管与协作平台，几乎所有开源项目的家。',
+      },
+      {
+        name: 'MDN Web Docs',
+        url: 'https://developer.mozilla.org',
+        desc: 'Web 技术文档的权威来源，查 HTML/CSS/JS 首选。',
+      },
+      {
+        name: 'Can I use',
+        url: 'https://caniuse.com',
+        desc: '查询浏览器特性支持情况，兼容性问题一查便知。',
+      },
+      {
+        name: 'Cloudflare Docs',
+        url: 'https://developers.cloudflare.com',
+        desc: 'CDN、DNS、Pages 部署的官方文档。',
+      },
+    ],
+  },
+  {
+    name: '博客与写作',
+    desc: '经常翻阅的中文博客与写作阵地。',
+    links: [
+      {
+        name: '阮一峰的网络日志',
+        url: 'https://www.ruanyifeng.com/blog/',
+        desc: '科技随笔周刊与技术翻译，持续更新多年。',
+      },
+      {
+        name: '少数派',
+        url: 'https://sspai.com',
+        desc: '效率工具、数字生活与工作流的优质中文社区。',
+      },
+    ],
+  },
+  {
+    name: '阅读与灵感',
+    desc: '获取信息与设计灵感的入口。',
+    links: [
+      {
+        name: 'Hacker News',
+        url: 'https://news.ycombinator.com',
+        desc: '技术圈的新闻聚合，讨论质量高。',
+      },
+      {
+        name: 'Awwwards',
+        url: 'https://www.awwwards.com',
+        desc: '全球网页设计作品评选，找视觉参考。',
+      },
+    ],
+  },
+];
+---
+
+<Base title="书签">
+  <h1 class="page-title">书签</h1>
+  <p class="page-desc">我常去的地方，按用途分组。</p>
+
+  {
+    groups.map((group) => (
+      <section class="link-group">
+        <h2>{group.name}</h2>
+        <p class="group-desc">{group.desc}</p>
+        <ul class="link-list">
+          {group.links.map((link) => (
+            <li>
+              <a class="name" href={link.url} rel="noopener noreferrer">
+                {link.name}
+                <span class="host">{new URL(link.url).host}</span>
+              </a>
+              <p class="desc">{link.desc}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</Base>

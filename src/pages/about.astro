@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE_TITLE, AUTHOR_NAME, SITE_SINCE } from '../consts';
+
+const milestones = [
+  {
+    date: `${SITE_SINCE}.10.29`,
+    text: '站点开通，写下第一篇文章。',
+  },
+  {
+    date: `${SITE_SINCE}.10.29`,
+    text: '整理完第一批书签，链接存档上线。',
+  },
+];
+---
+
+<Base title="关于">
+  <h1 class="page-title">关于</h1>
+  <p class="page-desc">关于我，以及这个站点。</p>
+
+  <div class="prose">
+    <p>
+      你好，我是 {AUTHOR_NAME}。这里是我的个人站点，放一些写作、读书笔记，以及平时收集的链接。
+    </p>
+    <p>
+      站点用 Astro 搭建，托管在 Cloudflare Pages。没有评论系统，没有追踪脚本，打开速度尽可能快。如果你有话想说，欢迎给我发邮件。
+    </p>
+  </div>
+
+  <div class="section-head">
+    <h2>站点日志</h2>
+  </div>
+
+  <ul class="timeline">
+    {
+      milestones.map((m) => (
+        <li>
+          <time>{m.date}</time>
+          <p>{m.text}</p>
+        </li>
+      ))
+    }
+  </ul>
+</Base>

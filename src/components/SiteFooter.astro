@@ -1,0 +1,16 @@
+---
+import { SITE_TITLE, SITE_SINCE } from '../consts';
+
+const year = new Date().getFullYear();
+const days = Math.floor(
+  (Date.now() - new Date(SITE_SINCE, 0, 1).getTime()) / 86400000,
+);
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <p>
+      © {year} {SITE_TITLE} · Since {SITE_SINCE} · {days} Days · <a href="/rss.xml">RSS</a>
+    </p>
+  </div>
+</footer>
